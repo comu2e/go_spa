@@ -1,6 +1,7 @@
 version: '3'
 services:
-  app:
+  backend:
+    container_name: go_backend
     build:
       context: .
       dockerfile: .docker/backend/Dockerfile
@@ -9,3 +10,14 @@ services:
       - "8080:8080"
     volumes:
       - ./src/backend:/go/src/app
+  frontend:
+    container_name: next_frontend
+    build:
+      context: .
+      dockerfile: .docker/frontend/Dockerfile
+    command: "npm run dev"
+    tty: true
+    volumes:
+      - ./src/frontend:/app
+    ports:
+      - "3000:3000"
