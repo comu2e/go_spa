@@ -5,11 +5,12 @@ services:
     build:
       context: .
       dockerfile: .docker/backend/Dockerfile
+    # command: [ "go run main.go" ]
     tty: true
     ports:
       - "8080:8080"
     volumes:
-      - ./src/backend:/go/src/app
+      - ./src/backend:/app
   frontend:
     container_name: next_frontend
     build:

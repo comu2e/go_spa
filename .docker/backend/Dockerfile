@@ -2,10 +2,10 @@
 FROM golang:1.15.2-alpine
 RUN apk update && apk add git
 # appディレクトリの作成
-RUN mkdir /go/src/app
+RUN mkdir /app
 # ワーキングディレクトリの設定
 # ホストのファイルをコンテナの作業ディレクトリに移行
-COPY . /go/src/app
-WORKDIR /go/src/app/src
+COPY ./src/backend /app
+WORKDIR /app
 RUN go get -u github.com/oxequa/realize 
 CMD ["realize", "start"]
