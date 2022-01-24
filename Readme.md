@@ -8,6 +8,6 @@ ECS
 
 ```
 $ docker-compose build
-$ docker-comopse exec app realize start
+$ docker-comopse up
 ```
 # Golang

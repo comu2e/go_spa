@@ -3,9 +3,14 @@ settings:
     force: false
     interval: 0s
 schema:
-- name: src
+- name: go_backend
   path: .
   commands: {}
+#   ここから
+  commands:
+    run:
+      status: true
+#   ここまでを追加する
   watcher:
     extensions:
     - go
