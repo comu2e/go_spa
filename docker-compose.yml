@@ -22,13 +22,14 @@ services:
       - ./src/frontend:/app
     ports:
       - "3000:3000"
+    expose:
+      - 8003
   # swagger
   swagger-editor:
     image: swaggerapi/swagger-editor
     container_name: "swagger-editor"
     ports:
       - "8001:8080"
-
   swagger-ui:
     image: swaggerapi/swagger-ui
     container_name: "swagger-ui"
@@ -45,5 +46,11 @@ services:
     ports:
       - "8003:4010"
     command: mock -h 0.0.0.0 /openapi.yaml
+    expose:
+      - 8003
     volumes:
       - ./api/openapi.yaml:/openapi.yaml
+
+networks:
+  default:
+    name: go_spa
