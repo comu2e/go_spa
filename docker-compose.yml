@@ -16,7 +16,7 @@ services:
     build:
       context: .
       dockerfile: .docker/frontend/Dockerfile
-    command: "npm run dev"
+    command: "yarn dev"
     tty: true
     volumes:
       - ./src/frontend:/app
