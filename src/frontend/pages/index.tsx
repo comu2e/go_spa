@@ -9,9 +9,9 @@ const Home: NextPage = (props) => {
     <div>
       {props.bpi.time.updated}
       <br />
-      {props.users[0].name}
+      {props.users[0].title}
       <br />
-      {process.env.NEXT_PUBLIC_ENDPOINT_URL}
+      <br />
 
       <ul>
 
@@ -24,7 +24,7 @@ const Home: NextPage = (props) => {
 Home.getInitialProps = async function () {
   const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
   const data = await res.json();
-  const res2 = await fetch(process.env.NEXT_PUBLIC_ENDPOINT_URL + '/users')
+  const res2 = await fetch(process.env.NEXT_PUBLIC_ENDPOINT_URL + '/todo')
   const data2 = await res2.json();
   return {
     bpi: data,
