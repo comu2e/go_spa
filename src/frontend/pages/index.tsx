@@ -8,9 +8,8 @@ const Home: NextPage = (props) => {
 
     <div>
       {props.bpi.time.updated}
-
-      {props.user[0].name}
-
+      <br />
+      {props.users[0].name}
     </div>
   )
 }
@@ -20,9 +19,10 @@ Home.getInitialProps = async function () {
   const data = await res.json();
   const res2 = await fetch('http://swagger-api:4010/users')
   const data2 = await res2.json();
+  console.log(data2);
   return {
     bpi: data,
-    user: data2
+    users: data2
   }
 
 }
