@@ -12,4 +12,8 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home(){
+  return (async function () {
+    let todoUrl = "htt"
+  })
+}
