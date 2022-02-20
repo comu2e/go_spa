@@ -45,7 +45,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /todo:
+  /todos:
     get:
       description: >
         Returns all todo

@@ -1,34 +1,26 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { ReactNode } from 'react';
 
 const Home: NextPage = (props) => {
-  return (
+  const todos = props.todos;
 
-    <div>
-      {props.bpi.time.updated}
-      <br />
-      {props.users[0].title}
-      <br />
-      <br />
 
-      <ul>
+  todos.map(todo => {
+    return (
+      <div>
+        {{ todo }}
+      </div>
+    )
+  })
 
-      </ul>
-    </div>
-
-  )
 }
 
 Home.getInitialProps = async function () {
-  const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+  const res = await fetch(process.env.NEXT_PUBLIC_ENDPOINT_URL + '/todos')
   const data = await res.json();
-  const res2 = await fetch(process.env.NEXT_PUBLIC_ENDPOINT_URL + '/todo')
-  const data2 = await res2.json();
   return {
-    bpi: data,
-    users: data2
+    todos: data
   }
 
 }
