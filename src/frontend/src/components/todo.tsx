@@ -4,8 +4,8 @@ import { NextPage } from 'next';
 import axios from 'axios';
 
 type Todo = {
-  id?: number;
-  title?: string[];
+  id: number;
+  title: string[];
 }[]
 
 export const Todo = () => {
@@ -24,7 +24,11 @@ export const Todo = () => {
       <h1>Axios Test</h1>
       <div>
         {todos.map((data: Todo, index) => (
-          <div key={index}>{data.title[1]}</div>
+
+          data.title.map((title: string, index_title) => (
+            <div key={index_title}>{title}</div>
+          ))
+
         ))}
       </div>
     </div>
