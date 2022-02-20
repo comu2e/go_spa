@@ -3,14 +3,14 @@ import Layout from "../src/components/_layouts/Layout"
 import Todos from "../src/components/todo"
 import { ReactChild, ReactFragment, ReactPortal } from 'react'
 import styles from '../styles/about.module.scss'  // scssをインポートする
-
+import layout from '../styles/layout.module.scss'
 export default function Home() {
 
   return (
-    <>
+    <div className={layout.main} >
       <div className={styles.article__title}>Hello</div>
       <Layout title="Layout Test"> </Layout>
-      <Todos> </Todos>
-    </>
+      <Todos > </Todos>
+    </div>
   )
 }

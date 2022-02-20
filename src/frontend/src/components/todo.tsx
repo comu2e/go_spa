@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createContext } from "vm";
 import { NextPage } from 'next';
 import axios from 'axios';
+import layout from '../../styles/layout.module.scss';
 
 type Todo = {
   id?: number;
@@ -19,7 +20,7 @@ export const Todo = () => {
     })
   }, [])
   return (
-    <div>
+    <div className={layout.contents}>
       <h1>Todos</h1>
       <div>
         {todos.map((todo: Todo, index: number) => (
