@@ -2,6 +2,12 @@
 
 SPA(Golang x Next.js)
 
+# Prerequirements
+
+- docker
+- docker-compose
+- Stoplight studio
+
 
 # Execute method
 

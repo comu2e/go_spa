@@ -2,15 +2,13 @@ openapi: 3.0.0
 info:
   version: 1.0.0
   title: Sample API
-  description: >-
-    A sample API that uses a sample-site as an example to demonstrate features in
-    the OpenAPI 3.0 specification
+  description: A sample API that uses a sample-site as an example to demonstrate features in the OpenAPI 3.0 specification
 servers:
   - url: "http://localhost:8003"
 paths:
   /users:
     get:
-      description: >
+      description: |
         Returns all users
       operationId: findUsers
       parameters:
@@ -39,6 +37,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/User"
+              examples:
+                example-1:
+                  value:
+                    - id: 100
+                      name: Taro
+                      is_done: pending
         default:
           description: unexpected error
           content:
@@ -47,26 +51,42 @@ paths:
                 $ref: "#/components/schemas/Error"
   /todos:
     get:
-      description: >
-        Returns all todo
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todo"
+              examples:
+                example-1:
+                  value:
+                    - id: 1
+                      title: ごはん
+                      is_done: true
+                    - id: 2
+                      title: 仕事
+                      is_done: false
+      operationId: get-todo
+      description: Todo全件取得
+    parameters: []
+  "/todos/{todo}":
+    get:
+      description: |
+        todo取得
       operationId: findTodo
       parameters:
-        - name: tags
+        - name: todo
           in: query
-          description: tags to filter by
+          description: todo to filter by
           required: false
           style: form
           schema:
-            type: array
+            type: integer
             items:
               type: string
-        - name: limit
-          in: query
-          description: maximum number of results to return
-          required: false
-          schema:
-            type: integer
-            format: int32
       responses:
         "200":
           description: todo response
@@ -76,58 +96,98 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Todo"
+              examples:
+                example-1:
+                  value:
+                    - id: 12
+                      title: ごはん
+                      is_done: false
         default:
           description: unexpected error
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+    post:
+      summary: ""
+      operationId: post-todos
+      responses:
+        "200":
+          description: OK
+      description: Todo作成
+    put:
+      summary: ""
+      operationId: put-todos
+      responses:
+        "200":
+          description: OK
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: todo
+          description: todo to update
+    delete:
+      summary: ""
+      operationId: delete-todos
+      responses:
+        "200":
+          description: OK
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: todo
+          description: todo to destroy
+    parameters:
+      - schema:
+          type: string
+        name: todo
+        in: path
+        required: true
 components:
   schemas:
     User:
-      type: "object"
+      type: object
       required:
-        - "name"
+        - name
       properties:
         id:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 100
         name:
-          type: "string"
-          example: "Taro"
-        status:
-          type: "string"
-          description: "user status"
+          type: string
+          example: Taro
+        is_done:
+          type: string
+          description: user is_done
           enum:
-            - "pending"
-            - "active"
-            - "inactive"
+            - pending
+            - active
+            - inactive
     Todo:
-      type: "object"
-      required:
-        - "title"
+      type: object
       properties:
-        id:
-          type: "integer"
-          format: "int64"
-          example: 12
-        title:
-          type: "string"
-          example:
-            - "ごはん"
-            - "テスト"
+        "":
+          type: object
+          properties:
+            id:
+              type: integer
+            title:
+              type: string
+            is_done:
+              type: boolean
     Error:
-      type: "object"
+      type: object
       properties:
         code:
-          type: "integer"
-          format: "int32"
+          type: integer
+          format: int32
         type:
-          type: "string"
+          type: string
         message:
-          type: "string"
-
+          type: string
 externalDocs:
-  description: "Find out more about service"
-  url: "Readme"
+  description: Find out more about service
+  url: Readme
