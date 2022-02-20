@@ -114,9 +114,11 @@ components:
           example: 12
         title:
           type: "string"
-          example:
-            - "ごはん"
-            - "テスト"
+          example: "ごはん"
+        is_done:
+          type: "boolean"
+          format: "bool"
+          example: false
     Error:
       type: "object"
       properties:

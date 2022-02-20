@@ -5,7 +5,8 @@ import axios from 'axios';
 
 type Todo = {
   id?: number;
-  title: string[];
+  title: string;
+  is_done: boolean;
 }
 
 export const Todo = () => {
@@ -21,11 +22,10 @@ export const Todo = () => {
     <div>
       <h1>Todos</h1>
       <div>
-        {todos.map((data: Todo, index: number) => (
-          data.title.map((title: string, index_title: number) => (
-            <div key={index_title}>{index_title + 1}:{title}</div>
-          ))
-
+        {todos.map((todo: Todo, index: number) => (
+          <div key={index}>{index + 1}:
+            {todo.title} :
+            {todo.is_done ? "完了" : "未完了"}</div>
         ))}
       </div>
     </div>
