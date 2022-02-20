@@ -4,7 +4,7 @@ info:
   title: Sample API
   description: A sample API that uses a sample-site as an example to demonstrate features in the OpenAPI 3.0 specification
 servers:
-  - url: 'http://localhost:8003'
+  - url: "http://localhost:8003"
 paths:
   /users:
     get:
@@ -29,50 +29,50 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: user response
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/User'
+                  $ref: "#/components/schemas/User"
               examples:
                 example-1:
                   value:
                     - id: 100
                       name: Taro
-                      status: pending
+                      is_done: pending
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /todos:
     get:
       summary: Your GET endpoint
       tags: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Todo'
+                $ref: "#/components/schemas/Todo"
               examples:
                 example-1:
                   value:
                     - id: 1
                       title: ごはん
-                      status: true
+                      is_done: true
                     - id: 2
-                      title: テスト
-                      status: false
+                      title: 仕事
+                      is_done: false
       operationId: get-todo
       description: Todo全件取得
     parameters: []
-  '/todos/{todo}':
+  "/todos/{todo}":
     get:
       description: |
         todo取得
@@ -88,14 +88,14 @@ paths:
             items:
               type: string
       responses:
-        '200':
+        "200":
           description: todo response
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Todo'
+                  $ref: "#/components/schemas/Todo"
               examples:
                 example-1:
                   value:
@@ -107,19 +107,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
     post:
-      summary: ''
+      summary: ""
       operationId: post-todos
       responses:
-        '200':
+        "200":
           description: OK
       description: Todo作成
     put:
-      summary: ''
+      summary: ""
       operationId: put-todos
       responses:
-        '200':
+        "200":
           description: OK
       parameters:
         - schema:
@@ -128,10 +128,10 @@ paths:
           name: todo
           description: todo to update
     delete:
-      summary: ''
+      summary: ""
       operationId: delete-todos
       responses:
-        '200':
+        "200":
           description: OK
       parameters:
         - schema:
@@ -159,9 +159,9 @@ components:
         name:
           type: string
           example: Taro
-        status:
+        is_done:
           type: string
-          description: user status
+          description: user is_done
           enum:
             - pending
             - active
@@ -169,14 +169,14 @@ components:
     Todo:
       type: object
       properties:
-        '':
+        "":
           type: object
           properties:
             id:
               type: integer
             title:
               type: string
-            status:
+            is_done:
               type: boolean
     Error:
       type: object
