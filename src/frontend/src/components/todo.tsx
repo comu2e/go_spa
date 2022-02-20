@@ -5,8 +5,8 @@ import axios from 'axios';
 
 type Todo = {
   id?: number;
-  title?: string[];
-}[]
+  title: string[];
+}
 
 export const Todo = () => {
   const [todos, setTodos] = useState([]);
@@ -21,8 +21,8 @@ export const Todo = () => {
     <div>
       <h1>Todos</h1>
       <div>
-        {todos.map((data: Todo, index) => (
-          data.title.map((title: string, index_title) => (
+        {todos.map((data: Todo, index: number) => (
+          data.title.map((title: string, index_title: number) => (
             <div key={index_title}>{index_title + 1}:{title}</div>
           ))
 
