@@ -114,7 +114,9 @@ components:
           example: 12
         title:
           type: "string"
-          example: "ごはん"
+          example:
+            - "ごはん"
+            - "テスト"
     Error:
       type: "object"
       properties:

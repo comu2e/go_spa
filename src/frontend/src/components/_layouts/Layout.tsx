@@ -3,12 +3,10 @@ export type Props = {
   children: React.ReactNode;
 }
 
-const Layout: React.VFC<Props> = ({ title = "title" }) => {
+const Layout: React.VFC<Props> = (props) => {
   return (
     <div>
-      Layout
-      <br />
-      {title}
+      {props.title}
     </div>
   )
 }
