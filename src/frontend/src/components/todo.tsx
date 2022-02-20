@@ -14,17 +14,14 @@ export const Todo = () => {
   const urlAPI = "http://localhost:8003/todos";
   useEffect(() => {
     axios.get(urlAPI).then((res) => {
-      console.log(res)
       setTodos(res.data);
     })
   }, [])
-  console.log(todos);
   return (
     <div>
       <h1>Todos</h1>
       <div>
         {todos.map((data: Todo, index) => (
-
           data.title.map((title: string, index_title) => (
             <div key={index_title}>{index_title + 1}:{title}</div>
           ))
