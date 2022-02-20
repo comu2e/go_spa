@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Layout title="Layout Test"> </Layout>
-      <Todos todos={undefined} ></Todos>
+      <Todos> </Todos>
     </>
   )
 }
