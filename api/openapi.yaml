@@ -45,6 +45,43 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /todos:
+    get:
+      description: >
+        Returns all todo
+      operationId: findTodo
+      parameters:
+        - name: tags
+          in: query
+          description: tags to filter by
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+        - name: limit
+          in: query
+          description: maximum number of results to return
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: todo response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Todo"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     User:
@@ -66,6 +103,20 @@ components:
             - "pending"
             - "active"
             - "inactive"
+    Todo:
+      type: "object"
+      required:
+        - "title"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+          example: 12
+        title:
+          type: "string"
+          example:
+            - "ごはん"
+            - "テスト"
     Error:
       type: "object"
       properties:
@@ -76,6 +127,7 @@ components:
           type: "string"
         message:
           type: "string"
+
 externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
+  description: "Find out more about service"
+  url: "Readme"
