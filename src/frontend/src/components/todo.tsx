@@ -22,9 +22,14 @@ export const Todo = () => {
   return (
     <div className={layout.contents}>
       <h1>Todos</h1>
+      <div className={layout.todo_input}>
+        <input type="text" name="todo" />
+      </div>
+
       <div>
+
         {todos.map((todo: Todo, index: number) => (
-          <div key={index}>{index + 1}:
+          <div className={layout.todo} key={index}>{index + 1}:
             {todo.title} :
             {todo.is_done ? "完了" : "未完了"}</div>
         ))}

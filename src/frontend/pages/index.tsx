@@ -8,9 +8,8 @@ export default function Home() {
 
   return (
     <div className={layout.main} >
-      <div className={styles.article__title}>Hello</div>
       <Layout title="Layout Test"> </Layout>
-      <Todos > </Todos>
+      <Todos />
     </div>
   )
 }
