@@ -64,9 +64,11 @@ paths:
                 example-1:
                   value:
                     - id: 1
-                      title: pending
+                      title: ごはん
+                      status: true
                     - id: 2
-                      title: pending
+                      title: テスト
+                      status: false
       operationId: get-todo
       description: Todo全件取得
     parameters: []
@@ -174,6 +176,8 @@ components:
               type: integer
             title:
               type: string
+            status:
+              type: boolean
     Error:
       type: object
       properties:
