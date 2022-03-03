@@ -3,6 +3,7 @@ import { createContext } from "vm";
 import { NextPage } from 'next';
 import axios from 'axios';
 import layout from '../../styles/layout.module.scss';
+import Link from 'next/link'
 
 type Todo = {
   id?: number;
@@ -29,9 +30,13 @@ export const Todo = () => {
       <div>
 
         {todos.map((todo: Todo, index: number) => (
-          <div className={layout.todo} key={index}>{index + 1}:
-            {todo.title} :
-            {todo.is_done ? "完了" : "未完了"}</div>
+          <div className={layout.todo} key={index}>
+
+            <Link href={{ pathname: "/todos/[id]", query: { id: todo.id } }}>
+              <a>{todo.title}</a>
+            </Link>
+          </div>
+
         ))}
       </div>
     </div>
